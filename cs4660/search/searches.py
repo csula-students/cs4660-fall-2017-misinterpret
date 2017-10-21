@@ -9,11 +9,11 @@ def bfs(graph, initial_node, dest_node):
     arrived.append(initial_node)
     addVertex=[]    
     
-    starPredecesor={}
+    starPredeccesor={}
     distance = {}
 
     distance[initial_node] =0
-    starPredecesor[initial_node] = None
+    starPredeccesor[initial_node] = None
     addVertex.append(initial_node)
 
 
@@ -25,19 +25,16 @@ def bfs(graph, initial_node, dest_node):
 
 
         G = graph.neighbors(currentVertex)
-        
-    
-
 
         for nbr in  graph.neighbors(currentVertex): 
             if nbr not in addVertex:
                 flag =False
                             
                 arrived = [nbr] + arrived
-
+                
                 distance[nbr] = distance[currentVertex]+ graph.distance(currentVertex,nbr)
                 print ("start printing Distace 4"); print(" ") ;  print(distance); print("end"); print("  ")
-                starPredecesor[nbr]= currentVertex
+                starPredeccesor[nbr]= currentVertex
                 addVertex.append(nbr)
                 break
         if dest_node in addVertex:
@@ -55,7 +52,7 @@ pass
 
     list =[]
 
-    while starPredecesor[dest_node] is not None:
+    while starPredeccesor[dest_node] is not None:
         list = [graph.get_edge(starPredecesor[dest_node], dest_node)] + list
         dest_node= starPredecesor[dest_node]
 
@@ -67,65 +64,53 @@ def dfs(graph, initial_node, dest_node):
     uses graph to do search from the initial_node to dest_node
     returns a list of actions going from the initial node to dest_node
     """
-    arrived =[]
-    arrived.append(initial_node)
     addVertex=[]    
-
-    starPredecesor={}
+    checkedNodes = []
+    copyOfCheckeddNodes =[]
+    
+    starPredeccsor={}
     distance = {}
 
+
     distance[initial_node] =0
-    starPredecesor[initial_node] = None
+    starPredeccsor[initial_node] = None
+
     addVertex.append(initial_node)
 
+    checkedNodes.append(initial_node)
+    copyOfCheckeddNodes.append(initial_node)
 
 
-    while (len(arrived)>0):
-        currentVertex = arrived[0]
+    while (len(copyOfCheckeddNodes)>0):
+        currentVertex = copyOfCheckeddNodes[0]
 
         flag=True
 
+        order = graph.neighbors(currentVertex)
+        order.sort(key=lambda x1 : x1.data)
 
-        G = graph.neighbors(currentVertex)
-        
-    
-
-
-        for nbr in  graph.neighbors(currentVertex): 
-            if nbr not in addVertex:
+        for nbr in (order):
+            if (nbr not in checkedNodes):
                 flag =False
-             
-                
-                
-                arrived = [nbr] + arrived
-
+                checkedNodes.append(nbr)
                 distance[nbr] = distance[currentVertex]+ graph.distance(currentVertex,nbr)
-                print ("start printing Distace 4"); print(" ") ;  print(distance); print("end"); print("  ")
-                starPredecesor[nbr]= currentVertex
-                addVertex.append(nbr)
-              
+                starPredeccsor[nbr]= currentVertex
+                copyOfCheckeddNodes = [nbr] + copyOfCheckeddNodes
                 break
-        if dest_node in addVertex:
+
+        if (dest_node in checkedNodes):
             break
-        if flag:
-            arrived.pop(0)
-            print("sassasa") 
 
+        if (flag):
+            copyOfCheckeddNodes.pop(0)
 
-
-"""
-pass
-"""
     list =[]
 
-    while starPredecesor[dest_node] is not None:
-        list = [graph.get_edge(starPredecesor[dest_node], dest_node)] + list
-        dest_node= starPredecesor[dest_node]
+    while (starPredeccsor[dest_node] is not None):
+        list = [graph.get_edge(starPredeccsor[dest_node], dest_node)] + list        
+        dest_node= starPredeccsor[dest_node]
 
-
-
-
-    return list
+return list
 
 
 
