@@ -116,9 +116,6 @@ def dfs(graph, initial_node, dest_node):
 """
 pass
 """
-
-
-
     list =[]
 
     while starPredecesor[dest_node] is not None:
