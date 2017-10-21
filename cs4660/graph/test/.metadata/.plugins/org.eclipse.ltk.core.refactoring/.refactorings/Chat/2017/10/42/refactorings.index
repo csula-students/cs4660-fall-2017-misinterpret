@@ -1,0 +1,5 @@
+1508483669047	Rename field 'connectIP'
+1508483689236	Rename type 'ClientModel'
+1508483730307	Rename field 'serverSock'
+1508483824309	Rename field 'connectPort'
+1508484878886	Rename local variable 'command'

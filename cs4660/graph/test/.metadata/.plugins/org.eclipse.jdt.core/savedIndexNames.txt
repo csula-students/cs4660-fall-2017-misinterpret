@@ -1,0 +1,20 @@
+INDEX VERSION 1.127+C:\Users\neope\Documents\CS4470\test\.metadata\.plugins\org.eclipse.jdt.core
+68568769.index
+4239427116.index
+1743620446.index
+2126339085.index
+155951962.index
+2157921699.index
+355148945.index
+1221426309.index
+3130218225.index
+3744094047.index
+4256572383.index
+1236615237.index
+3602765091.index
+2735003372.index
+229003856.index
+1822656655.index
+3134543620.index
+1707203881.index
+81271242.index
